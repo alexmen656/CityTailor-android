@@ -1,0 +1,970 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D98EC6E82DD3E91900229134 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98EC6E72DD3E91900229134 /* WidgetKit.framework */; };
+		D98EC6EA2DD3E91900229134 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98EC6E92DD3E91900229134 /* SwiftUI.framework */; };
+		D98EC6FB2DD3E91B00229134 /* Widget 1Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D98EC6E62DD3E91900229134 /* Widget 1Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D98EC7072DD4017900229134 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98EC6E72DD3E91900229134 /* WidgetKit.framework */; };
+		D98EC7082DD4017900229134 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98EC6E92DD3E91900229134 /* SwiftUI.framework */; };
+		D98EC7192DD4017A00229134 /* Widget 2Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D98EC7062DD4017900229134 /* Widget 2Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D98EC6F92DD3E91B00229134 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EA0C732DC4EF1E00F6169F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D98EC6E52DD3E91900229134;
+			remoteInfo = "Widget 1Extension";
+		};
+		D98EC7172DD4017A00229134 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EA0C732DC4EF1E00F6169F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D98EC7052DD4017900229134;
+			remoteInfo = "Widget 2Extension";
+		};
+		D9EA0C922DC4EF2000F6169F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EA0C732DC4EF1E00F6169F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9EA0C7A2DC4EF1E00F6169F;
+			remoteInfo = CityTailor;
+		};
+		D9EA0C9C2DC4EF2000F6169F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EA0C732DC4EF1E00F6169F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9EA0C7A2DC4EF1E00F6169F;
+			remoteInfo = CityTailor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D98EC7002DD3E91B00229134 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D98EC7192DD4017A00229134 /* Widget 2Extension.appex in Embed Foundation Extensions */,
+				D98EC6FB2DD3E91B00229134 /* Widget 1Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D98EC6E62DD3E91900229134 /* Widget 1Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget 1Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98EC6E72DD3E91900229134 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D98EC6E92DD3E91900229134 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D98EC7012DD3F8BB00229134 /* Widget 1Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget 1Extension.entitlements"; sourceTree = "<group>"; };
+		D98EC7062DD4017900229134 /* Widget 2Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget 2Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98EC71E2DD4071800229134 /* Widget 2Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Widget 2Extension.entitlements"; sourceTree = "<group>"; };
+		D9EA0C7B2DC4EF1E00F6169F /* CityTailor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityTailor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EA0C912DC4EF2000F6169F /* CityTailorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityTailorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EA0C9B2DC4EF2000F6169F /* CityTailorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityTailorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D98EC6FF2DD3E91B00229134 /* Exceptions for "Widget 1" folder in "Widget 1Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D98EC6E52DD3E91900229134 /* Widget 1Extension */;
+		};
+		D98EC71D2DD4017A00229134 /* Exceptions for "Widget 2" folder in "Widget 2Extension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D98EC7052DD4017900229134 /* Widget 2Extension */;
+		};
+		D9EA0CAF2DC4F11200F6169F /* Exceptions for "CityTailor" folder in "CityTailor" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D9EA0C7A2DC4EF1E00F6169F /* CityTailor */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D98EC6EB2DD3E91900229134 /* Widget 1 */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D98EC6FF2DD3E91B00229134 /* Exceptions for "Widget 1" folder in "Widget 1Extension" target */,
+			);
+			path = "Widget 1";
+			sourceTree = "<group>";
+		};
+		D98EC7092DD4017900229134 /* Widget 2 */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D98EC71D2DD4017A00229134 /* Exceptions for "Widget 2" folder in "Widget 2Extension" target */,
+			);
+			path = "Widget 2";
+			sourceTree = "<group>";
+		};
+		D9EA0C7D2DC4EF1E00F6169F /* CityTailor */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D9EA0CAF2DC4F11200F6169F /* Exceptions for "CityTailor" folder in "CityTailor" target */,
+			);
+			path = CityTailor;
+			sourceTree = "<group>";
+		};
+		D9EA0C942DC4EF2000F6169F /* CityTailorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CityTailorTests;
+			sourceTree = "<group>";
+		};
+		D9EA0C9E2DC4EF2000F6169F /* CityTailorUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CityTailorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D98EC6E32DD3E91900229134 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D98EC6EA2DD3E91900229134 /* SwiftUI.framework in Frameworks */,
+				D98EC6E82DD3E91900229134 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D98EC7032DD4017900229134 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D98EC7082DD4017900229134 /* SwiftUI.framework in Frameworks */,
+				D98EC7072DD4017900229134 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C782DC4EF1E00F6169F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C8E2DC4EF2000F6169F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C982DC4EF2000F6169F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9B7BADF2DC80885000A1B01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D98EC6E72DD3E91900229134 /* WidgetKit.framework */,
+				D98EC6E92DD3E91900229134 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9EA0C722DC4EF1E00F6169F = {
+			isa = PBXGroup;
+			children = (
+				D98EC71E2DD4071800229134 /* Widget 2Extension.entitlements */,
+				D98EC7012DD3F8BB00229134 /* Widget 1Extension.entitlements */,
+				D9EA0C7D2DC4EF1E00F6169F /* CityTailor */,
+				D9EA0C942DC4EF2000F6169F /* CityTailorTests */,
+				D9EA0C9E2DC4EF2000F6169F /* CityTailorUITests */,
+				D98EC6EB2DD3E91900229134 /* Widget 1 */,
+				D98EC7092DD4017900229134 /* Widget 2 */,
+				D9B7BADF2DC80885000A1B01 /* Frameworks */,
+				D9EA0C7C2DC4EF1E00F6169F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9EA0C7C2DC4EF1E00F6169F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9EA0C7B2DC4EF1E00F6169F /* CityTailor.app */,
+				D9EA0C912DC4EF2000F6169F /* CityTailorTests.xctest */,
+				D9EA0C9B2DC4EF2000F6169F /* CityTailorUITests.xctest */,
+				D98EC6E62DD3E91900229134 /* Widget 1Extension.appex */,
+				D98EC7062DD4017900229134 /* Widget 2Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D98EC6E52DD3E91900229134 /* Widget 1Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D98EC6FC2DD3E91B00229134 /* Build configuration list for PBXNativeTarget "Widget 1Extension" */;
+			buildPhases = (
+				D98EC6E22DD3E91900229134 /* Sources */,
+				D98EC6E32DD3E91900229134 /* Frameworks */,
+				D98EC6E42DD3E91900229134 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D98EC6EB2DD3E91900229134 /* Widget 1 */,
+			);
+			name = "Widget 1Extension";
+			packageProductDependencies = (
+			);
+			productName = "Widget 1Extension";
+			productReference = D98EC6E62DD3E91900229134 /* Widget 1Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D98EC7052DD4017900229134 /* Widget 2Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D98EC71A2DD4017A00229134 /* Build configuration list for PBXNativeTarget "Widget 2Extension" */;
+			buildPhases = (
+				D98EC7022DD4017900229134 /* Sources */,
+				D98EC7032DD4017900229134 /* Frameworks */,
+				D98EC7042DD4017900229134 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D98EC7092DD4017900229134 /* Widget 2 */,
+			);
+			name = "Widget 2Extension";
+			packageProductDependencies = (
+			);
+			productName = "Widget 2Extension";
+			productReference = D98EC7062DD4017900229134 /* Widget 2Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D9EA0C7A2DC4EF1E00F6169F /* CityTailor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9EA0CA52DC4EF2000F6169F /* Build configuration list for PBXNativeTarget "CityTailor" */;
+			buildPhases = (
+				D9EA0C772DC4EF1E00F6169F /* Sources */,
+				D9EA0C782DC4EF1E00F6169F /* Frameworks */,
+				D9EA0C792DC4EF1E00F6169F /* Resources */,
+				D98EC7002DD3E91B00229134 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D98EC6FA2DD3E91B00229134 /* PBXTargetDependency */,
+				D98EC7182DD4017A00229134 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D9EA0C7D2DC4EF1E00F6169F /* CityTailor */,
+			);
+			name = CityTailor;
+			packageProductDependencies = (
+			);
+			productName = CityTailor;
+			productReference = D9EA0C7B2DC4EF1E00F6169F /* CityTailor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D9EA0C902DC4EF2000F6169F /* CityTailorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9EA0CA82DC4EF2000F6169F /* Build configuration list for PBXNativeTarget "CityTailorTests" */;
+			buildPhases = (
+				D9EA0C8D2DC4EF2000F6169F /* Sources */,
+				D9EA0C8E2DC4EF2000F6169F /* Frameworks */,
+				D9EA0C8F2DC4EF2000F6169F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9EA0C932DC4EF2000F6169F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D9EA0C942DC4EF2000F6169F /* CityTailorTests */,
+			);
+			name = CityTailorTests;
+			packageProductDependencies = (
+			);
+			productName = CityTailorTests;
+			productReference = D9EA0C912DC4EF2000F6169F /* CityTailorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D9EA0C9A2DC4EF2000F6169F /* CityTailorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9EA0CAB2DC4EF2000F6169F /* Build configuration list for PBXNativeTarget "CityTailorUITests" */;
+			buildPhases = (
+				D9EA0C972DC4EF2000F6169F /* Sources */,
+				D9EA0C982DC4EF2000F6169F /* Frameworks */,
+				D9EA0C992DC4EF2000F6169F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9EA0C9D2DC4EF2000F6169F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D9EA0C9E2DC4EF2000F6169F /* CityTailorUITests */,
+			);
+			name = CityTailorUITests;
+			packageProductDependencies = (
+			);
+			productName = CityTailorUITests;
+			productReference = D9EA0C9B2DC4EF2000F6169F /* CityTailorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9EA0C732DC4EF1E00F6169F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					D98EC6E52DD3E91900229134 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					D98EC7052DD4017900229134 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					D9EA0C7A2DC4EF1E00F6169F = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					D9EA0C902DC4EF2000F6169F = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = D9EA0C7A2DC4EF1E00F6169F;
+					};
+					D9EA0C9A2DC4EF2000F6169F = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = D9EA0C7A2DC4EF1E00F6169F;
+					};
+				};
+			};
+			buildConfigurationList = D9EA0C762DC4EF1E00F6169F /* Build configuration list for PBXProject "CityTailor" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9EA0C722DC4EF1E00F6169F;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D9EA0C7C2DC4EF1E00F6169F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9EA0C7A2DC4EF1E00F6169F /* CityTailor */,
+				D9EA0C902DC4EF2000F6169F /* CityTailorTests */,
+				D9EA0C9A2DC4EF2000F6169F /* CityTailorUITests */,
+				D98EC6E52DD3E91900229134 /* Widget 1Extension */,
+				D98EC7052DD4017900229134 /* Widget 2Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D98EC6E42DD3E91900229134 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D98EC7042DD4017900229134 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C792DC4EF1E00F6169F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C8F2DC4EF2000F6169F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C992DC4EF2000F6169F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D98EC6E22DD3E91900229134 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D98EC7022DD4017900229134 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C772DC4EF1E00F6169F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C8D2DC4EF2000F6169F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EA0C972DC4EF2000F6169F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D98EC6FA2DD3E91B00229134 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D98EC6E52DD3E91900229134 /* Widget 1Extension */;
+			targetProxy = D98EC6F92DD3E91B00229134 /* PBXContainerItemProxy */;
+		};
+		D98EC7182DD4017A00229134 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D98EC7052DD4017900229134 /* Widget 2Extension */;
+			targetProxy = D98EC7172DD4017A00229134 /* PBXContainerItemProxy */;
+		};
+		D9EA0C932DC4EF2000F6169F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9EA0C7A2DC4EF1E00F6169F /* CityTailor */;
+			targetProxy = D9EA0C922DC4EF2000F6169F /* PBXContainerItemProxy */;
+		};
+		D9EA0C9D2DC4EF2000F6169F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9EA0C7A2DC4EF1E00F6169F /* CityTailor */;
+			targetProxy = D9EA0C9C2DC4EF2000F6169F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D98EC6FD2DD3E91B00229134 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Widget 1Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget 1/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget 1";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app.CityTailor.Widget-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D98EC6FE2DD3E91B00229134 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Widget 1Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget 1/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget 1";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app.CityTailor.Widget-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D98EC71B2DD4017A00229134 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Widget 2Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget 2/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget 2";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app.CityTailor.Widget-2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D98EC71C2DD4017A00229134 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Widget 2Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Widget 2/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Widget 2";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app.CityTailor.Widget-2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9EA0CA32DC4EF2000F6169F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D9EA0CA42DC4EF2000F6169F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		D9EA0CA62DC4EF2000F6169F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CityTailor/CityTailor.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CityTailor/Preview Content\"";
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CityTailor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CityTailor;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Your location data is needed to display your current position on the map and provide navigation directions to your activities.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location data is needed to display your current position on the map and provide navigation directions to your activities.";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CityTailor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		D9EA0CA72DC4EF2000F6169F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CityTailor/CityTailor.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CityTailor/Preview Content\"";
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CityTailor/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CityTailor;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Your location data is needed to display your current position on the map and provide navigation directions to your activities.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location data is needed to display your current position on the map and provide navigation directions to your activities.";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.CityTailor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		D9EA0CA92DC4EF2000F6169F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.control-center.CityTailorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityTailor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CityTailor";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		D9EA0CAA2DC4EF2000F6169F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.control-center.CityTailorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityTailor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CityTailor";
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		D9EA0CAC2DC4EF2000F6169F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.control-center.CityTailorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = CityTailor;
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		D9EA0CAD2DC4EF2000F6169F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AS5BHHK5AW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "eu.control-center.CityTailorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = CityTailor;
+				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D98EC6FC2DD3E91B00229134 /* Build configuration list for PBXNativeTarget "Widget 1Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D98EC6FD2DD3E91B00229134 /* Debug */,
+				D98EC6FE2DD3E91B00229134 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D98EC71A2DD4017A00229134 /* Build configuration list for PBXNativeTarget "Widget 2Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D98EC71B2DD4017A00229134 /* Debug */,
+				D98EC71C2DD4017A00229134 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EA0C762DC4EF1E00F6169F /* Build configuration list for PBXProject "CityTailor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EA0CA32DC4EF2000F6169F /* Debug */,
+				D9EA0CA42DC4EF2000F6169F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EA0CA52DC4EF2000F6169F /* Build configuration list for PBXNativeTarget "CityTailor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EA0CA62DC4EF2000F6169F /* Debug */,
+				D9EA0CA72DC4EF2000F6169F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EA0CA82DC4EF2000F6169F /* Build configuration list for PBXNativeTarget "CityTailorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EA0CA92DC4EF2000F6169F /* Debug */,
+				D9EA0CAA2DC4EF2000F6169F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EA0CAB2DC4EF2000F6169F /* Build configuration list for PBXNativeTarget "CityTailorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EA0CAC2DC4EF2000F6169F /* Debug */,
+				D9EA0CAD2DC4EF2000F6169F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9EA0C732DC4EF1E00F6169F /* Project object */;
+}
