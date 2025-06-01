@@ -19,37 +19,15 @@ fun SuggestedCityTags(
     onCitySelected: (City) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    LazyRow(
+        modifier = modifier.padding(horizontal = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Text(
-                text = "Popular destinations",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onSurface
+        items(cities) { city ->
+            CityTag(
+                city = city,
+                onClick = { onCitySelected(city) }
             )
-            
-            Spacer(modifier = Modifier.height(12.dp))
-            
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                items(cities) { city ->
-                    CityTag(
-                        city = city,
-                        onClick = { onCitySelected(city) }
-                    )
-                }
-            }
         }
     }
 }
@@ -60,27 +38,28 @@ private fun CityTag(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    ElevatedButton(
+    Surface(
         onClick = onClick,
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
-        colors = ButtonDefaults.elevatedButtonColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
-        )
+        color = MaterialTheme.colorScheme.surface,
+        tonalElevation = 1.dp,
+        shadowElevation = 0.dp
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(6.dp)
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
         ) {
             Text(
                 text = city.emoji,
-                fontSize = 16.sp
+                fontSize = 14.sp
             )
             Text(
                 text = city.name,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Normal,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
             )
         }
     }

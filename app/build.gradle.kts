@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,7 +8,7 @@ plugins {
 
 // Load secrets
 val secretsPropertiesFile = rootProject.file("secrets.properties")
-val secretsProperties = java.util.Properties()
+val secretsProperties = Properties()
 if (secretsPropertiesFile.exists()) {
     secretsProperties.load(secretsPropertiesFile.inputStream())
 }

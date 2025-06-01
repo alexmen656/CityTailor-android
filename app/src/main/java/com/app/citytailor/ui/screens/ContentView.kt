@@ -8,6 +8,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.app.citytailor.model.City
 import com.app.citytailor.ui.components.*
@@ -61,9 +64,11 @@ fun ContentView(
             4 -> SettingsView()
         }
         
-        // Custom Tab Bar at the bottom
+        // Custom Tab Bar at the bottom with proper Android navigation bar spacing
         Box(
-            modifier = Modifier.align(Alignment.BottomCenter)
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .navigationBarsPadding() // Add padding for Android navigation bar
         ) {
             CustomTabBar(
                 selectedTab = selectedTab,
@@ -116,9 +121,9 @@ private fun MainMapView(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 80.dp) // Account for tab bar
+                .statusBarsPadding() // Add padding for status bar
+                .padding(bottom = 100.dp) // Account for tab bar + navigation bar (increased from 80dp)
         ) {
-            Spacer(modifier = Modifier.height(48.dp)) // Status bar space
             
             // Search Bar
             SearchBar(
@@ -178,7 +183,10 @@ private fun MainMapView(
 @Composable
 private fun PlansView() {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .navigationBarsPadding(),
         contentAlignment = Alignment.Center
     ) {
         Text("Plans View - Coming Soon")
@@ -188,7 +196,10 @@ private fun PlansView() {
 @Composable
 private fun DiscoverView() {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .navigationBarsPadding(),
         contentAlignment = Alignment.Center
     ) {
         Text("Discover View - Coming Soon")
@@ -198,7 +209,10 @@ private fun DiscoverView() {
 @Composable
 private fun MediaView() {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .navigationBarsPadding(),
         contentAlignment = Alignment.Center
     ) {
         Text("Media View - Coming Soon")
@@ -208,7 +222,10 @@ private fun MediaView() {
 @Composable
 private fun SettingsView() {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .navigationBarsPadding(),
         contentAlignment = Alignment.Center
     ) {
         Text("Settings View - Coming Soon")
