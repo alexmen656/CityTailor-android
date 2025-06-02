@@ -24,7 +24,8 @@ fun CustomTabBar(
     modifier: Modifier = Modifier
 ) {
     Surface(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth(), // Background extends to bottom edge
         color = MaterialTheme.colorScheme.surface,
         shadowElevation = 6.dp,
         tonalElevation = 2.dp
@@ -32,7 +33,9 @@ fun CustomTabBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 8.dp),
+                .navigationBarsPadding() // Only content respects safe area
+                .padding(top = 8.dp, bottom = 4.dp)
+                .padding(horizontal = 0.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {

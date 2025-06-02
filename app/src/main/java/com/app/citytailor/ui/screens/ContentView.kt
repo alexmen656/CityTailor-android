@@ -42,7 +42,7 @@ fun ContentView(
         // Main content based on selected tab
         when (selectedTab) {
             0 -> PlansView()
-            1 -> DiscoverView()
+            1 -> com.app.citytailor.ui.screens.DiscoverView()
             2 -> MainMapView(
                 viewModel = viewModel,
                 region = region,
@@ -64,15 +64,14 @@ fun ContentView(
             4 -> SettingsView()
         }
         
-        // Custom Tab Bar at the bottom with proper Android navigation bar spacing
+        // Custom Tab Bar at the bottom - extends to screen edge
         Box(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .navigationBarsPadding() // Add padding for Android navigation bar
+            modifier = Modifier.align(Alignment.BottomCenter)
         ) {
             CustomTabBar(
                 selectedTab = selectedTab,
                 onTabSelected = { viewModel.setSelectedTab(it) }
+                // No navigationBarsPadding here - handled inside CustomTabBar
             )
         }
     }
@@ -190,19 +189,6 @@ private fun PlansView() {
         contentAlignment = Alignment.Center
     ) {
         Text("Plans View - Coming Soon")
-    }
-}
-
-@Composable
-private fun DiscoverView() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .navigationBarsPadding(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text("Discover View - Coming Soon")
     }
 }
 

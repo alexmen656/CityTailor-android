@@ -96,3 +96,20 @@ data class BackendResponse(
     val message: String,
     val data: TravelPlan
 )
+
+// Discover View Models
+data class FeaturedItem(
+    val id: String = java.util.UUID.randomUUID().toString(),
+    val title: String,
+    val description: String,
+    val iconName: String,
+    val color: androidx.compose.ui.graphics.Color
+)
+
+data class CategoryItem(
+    val id: String = java.util.UUID.randomUUID().toString(),
+    val titleKey: String,
+    val iconName: String,
+    val color: androidx.compose.ui.graphics.Color,
+    val items: List<String>
+)
