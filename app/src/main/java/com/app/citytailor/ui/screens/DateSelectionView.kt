@@ -860,10 +860,9 @@ private fun MaterialSelectionChip(
     val textStyle = MaterialTheme.typography.labelMedium
     val fontSize = with(LocalDensity.current) { textStyle.fontSize.toPx() }
     
-    ElevatedFilterChip(
+    FilterChip(
         selected = isSelected,
         onClick = onClick,
-        enabled = true,
         label = {
             Text(
                 text = text,
@@ -890,11 +889,14 @@ private fun MaterialSelectionChip(
             }
         },
         shape = MaterialTheme.shapes.medium,
-        colors = FilterChipDefaults.elevatedFilterChipColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+        colors = FilterChipDefaults.filterChipColors(
+            containerColor = MaterialTheme.colorScheme.surface,
+            labelColor = MaterialTheme.colorScheme.onSurface,
+            iconColor = MaterialTheme.colorScheme.primary,
             selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
             selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            selectedLeadingIconColor = MaterialTheme.colorScheme.onPrimaryContainer
+            selectedLeadingIconColor = MaterialTheme.colorScheme.primary,
+            selectedTrailingIconColor = MaterialTheme.colorScheme.primary
         ),
         border = FilterChipDefaults.filterChipBorder(
             enabled = true,

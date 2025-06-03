@@ -34,7 +34,7 @@ fun DayButtonsView(
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            Text(
+        /*    Text(
                 text = "Select Day",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
@@ -42,7 +42,7 @@ fun DayButtonsView(
             )
             
             Spacer(modifier = Modifier.height(12.dp))
-            
+            */ 
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
