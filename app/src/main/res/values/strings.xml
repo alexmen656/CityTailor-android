@@ -1,3 +1,67 @@
 <resources>
     <string name="app_name">CityTailor</string>
+    
+    <!-- Common -->
+    <string name="close">Schließen</string>
+    <string name="share">Teilen</string>
+    <string name="export">Exportieren</string>
+    <string name="upgrade">Upgraden</string>
+    <string name="premium">Premium</string>
+    <string name="back">Zurück</string>
+    <string name="loading">Wird geladen…</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="ok">OK</string>
+    <string name="save">Speichern</string>
+    
+    <!-- Main Navigation -->
+    <string name="tab_plans">Pläne</string>
+    <string name="tab_discover">Entdecken</string>
+    <string name="tab_map">Karte</string>
+    <string name="tab_media">Medien</string>
+    <string name="tab_settings">Einstellungen</string>
+    
+    <!-- Travel Plan View -->
+    <string name="travel_plan">Reiseplan</string>
+    <string name="date_range_format">%1$s bis %2$s</string>
+    <string name="day_format">Tag %d</string>
+    <string name="buy_tickets">Tickets kaufen</string>
+    <string name="view_on_map">Auf Karte anzeigen</string>
+    <string name="recommendations">Empfehlungen</string>
+    <string name="food_recommendations">Essen &amp; Trinken</string>
+    <string name="transport_recommendations">Transport</string>
+    <string name="local_tips">Lokale Tipps</string>
+    <string name="download_pdf">Als PDF herunterladen</string>
+    <string name="share_pdf">PDF teilen</string>
+    <string name="creating_pdf">PDF wird erstellt</string>
+    <string name="pdf_creation_message">Bitte warten Sie, während Ihr Reiseplan als PDF exportiert wird…</string>
+    <string name="pdf_creation_error">Fehler beim Erstellen des PDFs</string>
+    
+    <!-- Premium View -->
+    <string name="premium_upgrade">Premium Upgrade</string>
+    <string name="unlock_premium">Premium-Funktionen freischalten</string>
+    <string name="premium_description">Upgrade auf City Tailor Premium für exklusive Funktionen und unbegrenzte Reisepläne.</string>
+    <string name="unlimited_plans">Unbegrenzte Reisepläne</string>
+    <string name="unlimited_plans_desc">Erstellen Sie so viele Reisepläne, wie Sie möchten</string>
+    <string name="budget_customization">Budget-Anpassung</string>
+    <string name="budget_customization_desc">Legen Sie Ihr Budget fest und erhalten Sie maßgeschneiderte Empfehlungen</string>
+    <string name="pdf_export">PDF-Export</string>
+    <string name="pdf_export_desc">Exportieren Sie Ihre Reisepläne als PDF für den Offline-Zugriff</string>
+    <string name="no_ads">Keine Werbung</string>
+    <string name="no_ads_desc">Genießen Sie ein werbefreies Erlebnis</string>
+    <string name="price_monthly">€4.99 / Monat</string>
+    <string name="price_yearly">oder €49.99 / Jahr</string>
+    <string name="upgrade_now">Jetzt upgraden</string>
+    <string name="restore_purchase">Kauf wiederherstellen</string>
+    <string name="terms_notice">Mit dem Upgrade stimmen Sie unseren Nutzungsbedingungen und Datenschutzrichtlinien zu. Das Abonnement verlängert sich automatisch, sofern die automatische Verlängerung nicht mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums deaktiviert wird.</string>
+    
+    <!-- WebView -->
+    <string name="refresh">Aktualisieren</string>
+    
+    <!-- Location -->
+    <string name="location_permission_title">Standortberechtigung</string>
+    <string name="location_permission_message">City Tailor benötigt Zugriff auf Ihren Standort, um Ihnen personalisierte Reiseempfehlungen zu geben und nahe gelegene Sehenswürdigkeiten anzuzeigen.</string>
+    <string name="location_permission_denied">Die App benötigt Standortzugriff, um optimal zu funktionieren. Bitte aktivieren Sie die Standortberechtigung in den Einstellungen.</string>
+    <string name="location_settings">Einstellungen öffnen</string>
 </resources>

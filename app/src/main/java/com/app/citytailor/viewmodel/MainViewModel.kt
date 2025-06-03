@@ -38,6 +38,9 @@ class MainViewModel : ViewModel() {
     private val _showDateSelectionView = MutableStateFlow(false)
     val showDateSelectionView: StateFlow<Boolean> = _showDateSelectionView.asStateFlow()
     
+    private val _showTravelPlanView = MutableStateFlow(false)
+    val showTravelPlanView: StateFlow<Boolean> = _showTravelPlanView.asStateFlow()
+    
     private val _mapAnnotations = MutableStateFlow<List<MapAnnotation>>(emptyList())
     val mapAnnotations: StateFlow<List<MapAnnotation>> = _mapAnnotations.asStateFlow()
     
@@ -76,6 +79,10 @@ class MainViewModel : ViewModel() {
     
     fun setShowSuggestions(show: Boolean) {
         _showSuggestions.value = show
+    }
+    
+    fun setShowTravelPlanView(show: Boolean) {
+        _showTravelPlanView.value = show
     }
     
     fun setShowDateSelectionView(show: Boolean) {

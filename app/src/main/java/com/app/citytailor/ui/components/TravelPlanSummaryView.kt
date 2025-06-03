@@ -16,8 +16,7 @@ import com.app.citytailor.model.TravelPlan
 import java.text.SimpleDateFormat
 import java.util.*
 
-@Composable
-fun TravelPlanSummaryView(
+@Composable    fun TravelPlanSummaryView(
     plan: TravelPlan,
     onTap: () -> Unit,
     modifier: Modifier = Modifier

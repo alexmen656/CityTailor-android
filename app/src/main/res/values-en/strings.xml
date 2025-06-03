@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="close">Close</string>
+    <string name="share">Share</string>
+    <string name="export">Export</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="premium">Premium</string>
+    <string name="back">Back</string>
+    <string name="loading">Loading…</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="save">Save</string>
+    
+    <!-- Main Navigation -->
+    <string name="tab_plans">Plans</string>
+    <string name="tab_discover">Discover</string>
+    <string name="tab_map">Map</string>
+    <string name="tab_media">Media</string>
+    <string name="tab_settings">Settings</string>
+    
+    <!-- Travel Plan View -->
+    <string name="travel_plan">Travel Plan</string>
+    <string name="date_range_format">%1$s to %2$s</string>
+    <string name="day_format">Day %d</string>
+    <string name="buy_tickets">Buy Tickets</string>
+    <string name="view_on_map">View on Map</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="food_recommendations">Food &amp; Drink</string>
+    <string name="transport_recommendations">Transportation</string>
+    <string name="local_tips">Local Tips</string>
+    <string name="download_pdf">Download as PDF</string>
+    <string name="share_pdf">Share PDF</string>
+    <string name="creating_pdf">Creating PDF</string>
+    <string name="pdf_creation_message">Please wait while your travel plan is being exported as PDF…</string>
+    <string name="pdf_creation_error">Error creating PDF</string>
+    
+    <!-- Premium View -->
+    <string name="premium_upgrade">Premium Upgrade</string>
+    <string name="unlock_premium">Unlock Premium Features</string>
+    <string name="premium_description">Upgrade to City Tailor Premium to access exclusive features and create unlimited travel plans.</string>
+    <string name="unlimited_plans">Unlimited Travel Plans</string>
+    <string name="unlimited_plans_desc">Create as many travel plans as you want without limits</string>
+    <string name="budget_customization">Budget Customization</string>
+    <string name="budget_customization_desc">Set your budget level and get tailored recommendations</string>
+    <string name="pdf_export">PDF Export</string>
+    <string name="pdf_export_desc">Export your travel plans to PDF for offline access</string>
+    <string name="no_ads">No Ads</string>
+    <string name="no_ads_desc">Enjoy a clean, ad-free experience</string>
+    <string name="price_monthly">€4.99 / month</string>
+    <string name="price_yearly">or €49.99 / year</string>
+    <string name="upgrade_now">Upgrade Now</string>
+    <string name="restore_purchase">Restore Purchase</string>
+    <string name="terms_notice">By upgrading, you agree to our Terms of Service and Privacy Policy. Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period.</string>
+    
+    <!-- WebView -->
+    <string name="refresh">Refresh</string>
+    
+    <!-- Location -->
+    <string name="location_permission_title">Location Permission</string>
+    <string name="location_permission_message">City Tailor needs access to your location to provide personalized travel recommendations and show nearby attractions.</string>
+    <string name="location_permission_denied">The app needs location access to function optimally. Please enable location permission in settings.</string>
+    <string name="location_settings">Open Settings</string>
+</resources>

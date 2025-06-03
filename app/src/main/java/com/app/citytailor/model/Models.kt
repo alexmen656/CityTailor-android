@@ -32,7 +32,9 @@ data class Activity(
     val category: String,
     val price: String?,
     val rating: Double?,
-    val imageUrl: String?
+    val imageUrl: String?,
+    val mapAddress: String = location,
+    val displayAddress: String = location
 ) {
     val coordinate: LatLng
         get() = LatLng(latitude, longitude)
@@ -53,7 +55,9 @@ data class TravelPlan(
     val budgetLevel: BudgetLevel,
     val transportationType: TransportationType,
     val travelMode: TravelMode,
-    val travelType: TravelType
+    val travelType: TravelType,
+    val recommendations: Recommendations? = null,
+    val info: String? = null
 )
 
 data class MapAnnotation(
@@ -83,4 +87,10 @@ data class CategoryItem(
     val iconName: String,
     val color: androidx.compose.ui.graphics.Color,
     val items: List<String>
+)
+
+data class Recommendations(
+    val food: List<String>,
+    val transport: List<String>,
+    val tips: List<String>
 )

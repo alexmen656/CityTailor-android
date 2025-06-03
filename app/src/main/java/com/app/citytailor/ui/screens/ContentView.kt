@@ -35,15 +35,16 @@ fun ContentView(
     val showActivityDetails by viewModel.showActivityDetails.collectAsState()
     val selectedActivity by viewModel.selectedActivity.collectAsState()
     val showSaveFeedback by viewModel.showSaveFeedback.collectAsState()
+    val showTravelPlanView by viewModel.showTravelPlanView.collectAsState()
     
     val keyboardController = LocalSoftwareKeyboardController.current
     
     Box(modifier = Modifier.fillMaxSize()) {
         // Main content based on selected tab
         when (selectedTab) {
-            0 -> PlansView()
+            0 -> PlansScreen()
             1 -> com.app.citytailor.ui.screens.DiscoverView()
-            2 -> MainMapView(
+            2 -> MainMapScreen(
                 viewModel = viewModel,
                 region = region,
                 searchText = searchText,
@@ -60,8 +61,8 @@ fun ContentView(
                     }
                 }
             )
-            3 -> MediaView()
-            4 -> SettingsView()
+            3 -> MediaScreen()
+            4 -> SettingsScreen()
         }
         
         // Custom Tab Bar at the bottom - extends to screen edge
@@ -85,8 +86,10 @@ fun ContentView(
                 viewModel.setSelectedDayNumber(1)
                 
                 // Update map for the first day
-                travelPlan.dailyPlans?.let { dailyPlans ->
-                    viewModel.updateMapForSelectedDay(dailyPlans, travelPlan.location)
+                travelPlan?.let { plan ->
+                    plan.dailyPlans?.let { dailyPlans ->
+                        viewModel.updateMapForSelectedDay(dailyPlans, plan.location)
+                    }
                 }
                 
                 // TODO: Save travel plan if user has remaining free plans
@@ -112,10 +115,33 @@ fun ContentView(
             viewModel.setShowSaveFeedback(false)
         }
     }
+    
+    // Add TravelPlanView modal
+    if (showTravelPlanView) {
+        travelPlan?.let { plan ->
+            TravelPlanView(
+                travelPlan = plan,
+                selectedDayNumber = selectedDayNumber,
+                onDaySelected = { dayNumber ->
+                    viewModel.setSelectedDayNumber(dayNumber)
+                    plan.dailyPlans?.let { dailyPlans ->
+                        viewModel.updateMapForSelectedDay(dailyPlans, plan.location)
+                    }
+                },
+                onActivitySelected = { activity ->
+                    viewModel.setSelectedActivity(activity)
+                    viewModel.setShowActivityDetails(true)
+                },
+                onDismiss = {
+                    viewModel.setShowTravelPlanView(false)
+                }
+            )
+        }
+    }
 }
 
 @Composable
-private fun MainMapView(
+fun MainMapScreen(
     viewModel: MainViewModel,
     region: CameraPosition,
     searchText: String,
@@ -141,10 +167,9 @@ private fun MainMapView(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .statusBarsPadding() // Add padding for status bar
-                .padding(bottom = 100.dp) // Account for tab bar + navigation bar (increased from 80dp)
+                .statusBarsPadding()
+                .padding(bottom = 100.dp)
         ) {
-            
             // Search Bar
             SearchBar(
                 searchText = searchText,
@@ -155,11 +180,6 @@ private fun MainMapView(
                 onShowSuggestions = { viewModel.setShowSuggestions(it) },
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
-            
-            // Search suggestions (if any)
-            if (showSuggestions && searchText.isNotEmpty()) {
-                // TODO: Implement SearchSuggestionsView
-            }
             
             // Popular cities when no search text and no travel plan
             if (searchText.isEmpty() && travelPlan == null) {
@@ -173,15 +193,17 @@ private fun MainMapView(
             }
             
             // Day buttons when travel plan exists
-            if (travelPlan != null && !travelPlan.dailyPlans.isNullOrEmpty()) {
-                DayButtonsView(
-                    dailyPlans = travelPlan.dailyPlans,
-                    selectedDayNumber = selectedDayNumber,
-                    onDaySelected = { dayNumber ->
-                        viewModel.setSelectedDayNumber(dayNumber)
-                        viewModel.updateMapForSelectedDay(travelPlan.dailyPlans, travelPlan.location)
-                    }
-                )
+            travelPlan?.dailyPlans?.let { dailyPlans ->
+                if (dailyPlans.isNotEmpty()) {
+                    DayButtonsView(
+                        dailyPlans = dailyPlans,
+                        selectedDayNumber = selectedDayNumber,
+                        onDaySelected = { dayNumber ->
+                            viewModel.setSelectedDayNumber(dayNumber)
+                            viewModel.updateMapForSelectedDay(dailyPlans, travelPlan.location)
+                        }
+                    )
+                }
             }
             
             Spacer(modifier = Modifier.weight(1f))
@@ -191,17 +213,21 @@ private fun MainMapView(
                 TravelPlanSummaryView(
                     plan = travelPlan,
                     onTap = {
-                        viewModel.setShowDateSelectionView(true)
+                        viewModel.setShowTravelPlanView(true)
                     }
                 )
             }
         }
+        
+        // Search suggestions if any
+        if (showSuggestions && searchText.isNotEmpty()) {
+            // TODO: Implement SearchSuggestionsView
+        }
     }
 }
 
-// Placeholder composables for other tabs
 @Composable
-private fun PlansView() {
+fun PlansScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -214,7 +240,7 @@ private fun PlansView() {
 }
 
 @Composable
-private fun MediaView() {
+fun MediaScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -227,7 +253,7 @@ private fun MediaView() {
 }
 
 @Composable
-private fun SettingsView() {
+fun SettingsScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
