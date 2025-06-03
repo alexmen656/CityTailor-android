@@ -78,7 +78,28 @@ fun ContentView(
     
     // Modal sheets and dialogs
     if (showDateSelectionView) {
-        // TODO: Implement DateSelectionView as a modal
+        DateSelectionView(
+            locationName = viewModel.selectedLocation.collectAsState().value,
+            onTravelPlanReceived = { travelPlan ->
+                viewModel.setTravelPlan(travelPlan)
+                viewModel.setSelectedDayNumber(1)
+                
+                // Update map for the first day
+                travelPlan.dailyPlans?.let { dailyPlans ->
+                    viewModel.updateMapForSelectedDay(dailyPlans, travelPlan.location)
+                }
+                
+                // TODO: Save travel plan if user has remaining free plans
+                // TravelPlanStore.shared.canSaveTravelPlan(isPremium: false, context: context)
+                // TravelPlanStore.shared.saveTravelPlan(travelPlan, context: context)
+                // viewModel.setShowSaveFeedback(true)
+                
+                viewModel.setShowDateSelectionView(false)
+            },
+            onDismiss = {
+                viewModel.setShowDateSelectionView(false)
+            }
+        )
     }
     
     if (showActivityDetails && selectedActivity != null) {

@@ -124,10 +124,23 @@ class MainViewModel : ViewModel() {
     
     fun searchLocation(searchQuery: String) {
         viewModelScope.launch {
-            // TODO: Implement location search using Google Places API or Geocoding
-            // For now, just update the search text
+            // Update search text and hide suggestions
             setSearchText(searchQuery)
             setShowSuggestions(false)
+            
+            // Set the selected location
+            setSelectedLocation(searchQuery)
+            
+            // Clear any existing travel plan and map annotations
+            setTravelPlan(null)
+            setMapAnnotations(emptyList())
+            
+            // TODO: In a real implementation, we would use Google Places API or Geocoding
+            // to get the actual coordinates and update the map region
+            
+            // Show the DateSelectionView after a short delay (similar to iOS implementation)
+            kotlinx.coroutines.delay(1000)
+            setShowDateSelectionView(true)
         }
     }
     
