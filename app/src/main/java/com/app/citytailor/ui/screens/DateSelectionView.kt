@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,7 +30,10 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
+import android.util.Log
 import com.app.citytailor.model.*
+import com.app.citytailor.network.TravelPlanService
+import com.app.citytailor.user.UserManager
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -54,40 +58,75 @@ fun DateSelectionView(
     var generationProgress by remember { mutableFloatStateOf(0f) }
     var generationStatus by remember { mutableStateOf("Bereite Generierung vor...") }
     
-    val isPremium = false // TODO: Connect to actual premium service
-    val remainingFreePlans = 3 // TODO: Get from actual service
+    val context = LocalContext.current
+    val userManager = remember { UserManager.getInstance(context) }
+    val isPremium = userManager.isPremium()
+    val remainingFreePlans = userManager.getRemainingFreePlans()
     val tripLengthInDays = ChronoUnit.DAYS.between(startDate, endDate).toInt() + 1
+    
+    // Helper function to update generation status with simulated delay
+    suspend fun updateGenerationStatus(currentStep: Int, totalSteps: Int) {
+        val targetProgress = currentStep.toFloat() / totalSteps.toFloat()
+        
+        // Simulate gradual progress to the target
+        val startProgress = generationProgress
+        val progressDifference = targetProgress - startProgress
+        val stepCount = 20
+        
+        for (i in 1..stepCount) {
+            generationProgress = startProgress + (progressDifference * i / stepCount)
+            kotlinx.coroutines.delay(100)
+        }
+    }
 
-    // Mock travel plan generation
+    // Real travel plan generation
     LaunchedEffect(isLoading) {
         if (isLoading) {
-            // Simulate progress
-            for (i in 1..100) {
-                kotlinx.coroutines.delay(50)
-                generationProgress = i / 100f
-                when {
-                    i < 30 -> generationStatus = "Analysiere Reiseziel..."
-                    i < 60 -> generationStatus = "Erstelle Tagesplan..."
-                    i < 90 -> generationStatus = "Finalisiere Empfehlungen..."
-                    else -> generationStatus = "Fertig!"
+            try {
+                // Initialize progress
+                generationProgress = 0f
+                generationStatus = "Bereite Generierung vor..."
+                
+                val totalSteps = tripLengthInDays + 2 // Preparation + days + finalization
+                
+                // Preparation step
+                updateGenerationStatus(1, totalSteps)
+                
+                // Days steps
+                for (day in 1..tripLengthInDays) {
+                    generationStatus = "Erstelle Tagesplan $day von $tripLengthInDays..."
+                    updateGenerationStatus(day + 1, totalSteps)
                 }
+                
+                // Finalization step
+                generationStatus = "Finalisiere Empfehlungen..."
+                updateGenerationStatus(totalSteps, totalSteps)
+                
+                // Test connection first
+                generationStatus = "Teste Verbindung zum Server..."
+                val connectionResult = TravelPlanService.shared.testConnection()
+                Log.d("DateSelectionView", "Connection test: $connectionResult")
+                
+                // Actual API call
+                generationStatus = "Sende Anfrage an den Server..."
+                val travelPlan = TravelPlanService.shared.generateTravelPlan(
+                    location = locationName,
+                    startDate = startDate,
+                    endDate = endDate,
+                    travelType = selectedTravelType,
+                    transportationType = selectedTransportationType,
+                    travelMode = selectedTravelMode,
+                    budgetLevel = selectedBudgetLevel,
+                    isPremium = isPremium
+                )
+                
+                onTravelPlanReceived(travelPlan)
+                onDismiss()
+            } catch (e: Exception) {
+                // Handle error
+                generationStatus = "Fehler: ${e.message}"
+                isLoading = false
             }
-            
-            // Create mock travel plan
-            val mockPlan = TravelPlan(
-                id = "mock-${System.currentTimeMillis()}",
-                location = locationName,
-                startDate = startDate.toString(),
-                endDate = endDate.toString(),
-                dailyPlans = null, // TODO: Add mock daily plans
-                budgetLevel = selectedBudgetLevel,
-                transportationType = selectedTransportationType,
-                travelMode = selectedTravelMode,
-                travelType = selectedTravelType
-            )
-            
-            onTravelPlanReceived(mockPlan)
-            onDismiss()
         }
     }
 
@@ -425,7 +464,7 @@ fun DateSelectionView(
                                             )
                                         }
                                         
-                                        val isPremium = false // TODO: Connect to actual premium service
+                                        val isPremium = userManager.isPremium()
                                         
                                         if (isPremium) {
                                             // Travel Mode (Premium only)
@@ -517,8 +556,8 @@ fun DateSelectionView(
                             Column(
                                 modifier = Modifier.padding(16.dp)
                             ) {
-                                val isPremium = false // TODO: Connect to actual premium service
-                                val remainingFreePlans = 3 // TODO: Get from actual service
+                                val isPremium = userManager.isPremium()
+                                val remainingFreePlans = userManager.getRemainingFreePlans()
                                 
                                 ElevatedButton(
                                     onClick = {
@@ -586,7 +625,6 @@ fun DateSelectionView(
                     }
                     
                     // Free Account Limits (if not premium)
-                    val isPremium = false // TODO: Connect to actual premium service
                     if (!isPremium) {
                         item {
                             Card(
@@ -598,7 +636,7 @@ fun DateSelectionView(
                                 Column(
                                     modifier = Modifier.padding(16.dp)
                                 ) {
-                                    val remainingFreePlans = 3 // TODO: Get from actual service
+                                    val remainingFreePlans = userManager.getRemainingFreePlans()
                                     
                                     Row(
                                         verticalAlignment = Alignment.CenterVertically
