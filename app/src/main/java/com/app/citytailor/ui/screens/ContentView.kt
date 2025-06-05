@@ -72,7 +72,7 @@ fun ContentView(
                     }
                 }
             )
-            3 -> MediaScreen()
+            3 -> CommunityScreen()
             4 -> SettingsScreen()
         }
         
@@ -242,7 +242,7 @@ fun PlansScreen() {
 }
 
 @Composable
-fun MediaScreen() {
+fun CommunityScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -250,7 +250,7 @@ fun MediaScreen() {
             .navigationBarsPadding(),
         contentAlignment = Alignment.Center
     ) {
-        Text("Media View - Coming Soon")
+        Text("Community View - Coming Soon")
     }
 }
 

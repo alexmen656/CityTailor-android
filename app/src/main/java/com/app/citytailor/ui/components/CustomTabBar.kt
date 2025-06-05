@@ -58,8 +58,8 @@ fun CustomTabBar(
                 onClick = { onTabSelected(2) }
             )
             TabItem(
-                icon = Icons.Default.PlayArrow,
-                label = "Media",
+                icon = Icons.Default.People,
+                label = "Community",
                 isSelected = selectedTab == 3,
                 onClick = { onTabSelected(3) }
             )
