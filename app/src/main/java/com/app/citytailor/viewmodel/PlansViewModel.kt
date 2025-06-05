@@ -30,6 +30,15 @@ class PlansViewModel(application: Application) : AndroidViewModel(application) {
     private val _isPremium = MutableStateFlow(false)
     val isPremium: StateFlow<Boolean> = _isPremium.asStateFlow()
 
+    private val _currentPlan = MutableStateFlow<TravelPlan?>(null)
+    val currentPlan: StateFlow<TravelPlan?> = _currentPlan.asStateFlow()
+
+    private val _showTravelPlanView = MutableStateFlow(false)
+    val showTravelPlanView: StateFlow<Boolean> = _showTravelPlanView.asStateFlow()
+
+    private val _selectedDayNumber = MutableStateFlow(1)
+    val selectedDayNumber: StateFlow<Int> = _selectedDayNumber.asStateFlow()
+
     val savedPlans: Flow<List<SavedTravelPlan>> = travelPlanStore.getAllPlans()
 
     init {
@@ -98,6 +107,18 @@ class PlansViewModel(application: Application) : AndroidViewModel(application) {
     fun refreshPlanStatus() {
         updatePremiumStatus()
         updateRemainingFreePlans()
+    }
+
+    fun setCurrentPlan(plan: TravelPlan) {
+        _currentPlan.value = plan
+    }
+
+    fun setShowTravelPlanView(show: Boolean) {
+        _showTravelPlanView.value = show
+    }
+
+    fun setSelectedDayNumber(dayNumber: Int) {
+        _selectedDayNumber.value = dayNumber
     }
 
     companion object {

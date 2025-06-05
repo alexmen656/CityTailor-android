@@ -33,6 +33,9 @@ fun PlansView(
     val showSavedMessage by viewModel.showSavedMessage.collectAsState()
     val remainingFreePlans by viewModel.remainingFreePlans.collectAsState()
     val isPremium by viewModel.isPremium.collectAsState()
+    val currentPlan by viewModel.currentPlan.collectAsState()
+    val showTravelPlanView by viewModel.showTravelPlanView.collectAsState()
+    val selectedDayNumber by viewModel.selectedDayNumber.collectAsState()
 
     Column(
         modifier = Modifier
@@ -154,7 +157,10 @@ fun PlansView(
                     val plan = viewModel.getParsedTravelPlan(savedPlan)
                     TravelPlanCard(
                         plan = plan,
-                        onPlanClick = { /* TODO: Navigate to plan details */ },
+                        onPlanClick = { 
+                            viewModel.setCurrentPlan(plan)
+                            viewModel.setShowTravelPlanView(true)
+                        },
                         onDeleteClick = { viewModel.deletePlan(savedPlan.id) }
                     )
                 }
@@ -171,6 +177,19 @@ fun PlansView(
     if (showSavedMessage) {
         LaunchedEffect(showSavedMessage) {
             viewModel.dismissSavedMessage()
+        }
+    }
+
+    // TravelPlanView modal
+    if (showTravelPlanView) {
+        currentPlan?.let { plan ->
+            TravelPlanView(
+                travelPlan = plan,
+                selectedDayNumber = selectedDayNumber,
+                onDaySelected = { dayNumber -> viewModel.setSelectedDayNumber(dayNumber) },
+                onActivitySelected = { activity -> /* TODO: Implement activity selection */ },
+                onDismiss = { viewModel.setShowTravelPlanView(false) }
+            )
         }
     }
 }
