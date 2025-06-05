@@ -1,8 +1,12 @@
 package com.app.citytailor.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.app.citytailor.model.*
+import com.app.citytailor.user.UserManager
+import com.app.citytailor.data.store.TravelPlanStore
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,14 +14,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    private val application: android.app.Application
+) : ViewModel() {
     
-    private val _selectedTab = MutableStateFlow(2) // Default to main view (index 2)
+    private val _selectedTab = MutableStateFlow(2)
     val selectedTab: StateFlow<Int> = _selectedTab.asStateFlow()
     
     private val _region = MutableStateFlow(
         CameraPosition.Builder()
-            .target(LatLng(52.520008, 13.404954)) // Default to Berlin
+            .target(LatLng(52.520008, 13.404954))
             .zoom(10f)
             .build()
     )
@@ -176,6 +182,39 @@ class MainViewModel : ViewModel() {
                 .zoom(12f)
                 .build()
             setRegion(newPosition)
+        }
+    }
+    
+    fun saveTravelPlan(plan: TravelPlan?) = viewModelScope.launch {
+        plan ?: return@launch
+        
+        try {
+            val userManager = UserManager.getInstance(application)
+            val travelPlanStore = TravelPlanStore.getInstance(application)
+            
+            if (travelPlanStore.canSaveTravelPlan()) {
+                if (!userManager.isPremium()) {
+                    userManager.decrementRemainingFreePlans()
+                }
+                travelPlanStore.saveTravelPlan(plan)
+                setShowSaveFeedback(true)
+            }
+        } catch (e: Exception) {
+            Log.e("MainViewModel", "Error saving travel plan", e)
+        }
+    }
+    
+    companion object {
+        fun factory(application: android.app.Application): ViewModelProvider.Factory {
+            return object : ViewModelProvider.Factory {
+                @Suppress("UNCHECKED_CAST")
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                    if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+                        return MainViewModel(application) as T
+                    }
+                    throw IllegalArgumentException("Unknown ViewModel class")
+                }
+            }
         }
     }
 }

@@ -1,33 +1,38 @@
 package com.app.citytailor.ui.screens
 
+import android.app.Application
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.filled.Place
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.app.citytailor.model.TravelPlan
-import com.app.citytailor.user.UserManager
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.platform.LocalContext
-import com.app.citytailor.viewmodel.MainViewModel
+import com.app.citytailor.data.room.entity.SavedTravelPlan
+import com.app.citytailor.data.store.TravelPlanStore
+import com.app.citytailor.model.TravelPlan
+import com.app.citytailor.viewmodel.PlansViewModel
+import com.app.citytailor.user.UserManager
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
-fun PlansView(viewModel: MainViewModel = viewModel()) {
-    var showPremiumView by remember { mutableStateOf(false) }
-    var savedPlans by remember { mutableStateOf<List<TravelPlan>>(emptyList()) }
-    val context = LocalContext.current
-    val userManager = remember { UserManager.getInstance(context) }
-    val remainingFreePlans = userManager.getRemainingFreePlans()
-    val isPremium = userManager.isPremium()
+fun PlansView(
+    viewModel: PlansViewModel = viewModel(
+        factory = PlansViewModel.Companion.Factory(LocalContext.current.applicationContext as Application)
+    )
+) {
+    val plans by viewModel.savedPlans.collectAsState(initial = emptyList())
+    val showPremiumDialog by viewModel.showPremiumDialog.collectAsState()
+    val showSavedMessage by viewModel.showSavedMessage.collectAsState()
+    val remainingFreePlans by viewModel.remainingFreePlans.collectAsState()
+    val isPremium by viewModel.isPremium.collectAsState()
 
     Column(
         modifier = Modifier
@@ -36,7 +41,7 @@ fun PlansView(viewModel: MainViewModel = viewModel()) {
             .padding(16.dp)
     ) {
         // Show premium upgrade card if user is not premium and has no remaining free plans
-        if (!isPremium && remainingFreePlans == 0 && savedPlans.isNotEmpty()) {
+        if (!isPremium && remainingFreePlans == 0 && plans.isNotEmpty()) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -66,7 +71,7 @@ fun PlansView(viewModel: MainViewModel = viewModel()) {
                         modifier = Modifier.padding(vertical = 8.dp)
                     )
                     Button(
-                        onClick = { showPremiumView = true },
+                        onClick = { viewModel.navigateToPremium() },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.tertiary
                         )
@@ -104,7 +109,7 @@ fun PlansView(viewModel: MainViewModel = viewModel()) {
                         text = "Remaining Free Plans: $remainingFreePlans",
                         style = MaterialTheme.typography.bodyMedium
                     )
-                    TextButton(onClick = { showPremiumView = true }) {
+                    TextButton(onClick = { viewModel.navigateToPremium() }) {
                         Text("Upgrade to Premium")
                     }
                 }
@@ -116,7 +121,7 @@ fun PlansView(viewModel: MainViewModel = viewModel()) {
             modifier = Modifier.weight(1f),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            if (savedPlans.isEmpty()) {
+            if (plans.isEmpty()) {
                 item {
                     Column(
                         modifier = Modifier
@@ -126,7 +131,7 @@ fun PlansView(viewModel: MainViewModel = viewModel()) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.Home,
+                            imageVector = Icons.Default.DateRange,
                             contentDescription = null,
                             modifier = Modifier.size(64.dp),
                             tint = MaterialTheme.colorScheme.primary
@@ -145,20 +150,28 @@ fun PlansView(viewModel: MainViewModel = viewModel()) {
                     }
                 }
             } else {
-                items(savedPlans) { plan ->
+                items(plans) { savedPlan ->
+                    val plan = viewModel.getParsedTravelPlan(savedPlan)
                     TravelPlanCard(
                         plan = plan,
                         onPlanClick = { /* TODO: Navigate to plan details */ },
-                        onDeleteClick = { /* TODO: Delete plan */ }
+                        onDeleteClick = { viewModel.deletePlan(savedPlan.id) }
                     )
                 }
             }
         }
     }
 
-    if (showPremiumView) {
-        // TODO: Show PremiumView dialog
-        showPremiumView = false
+    if (showPremiumDialog) {
+        PremiumDialog(
+            onDismiss = { viewModel.dismissPremiumDialog() }
+        )
+    }
+    
+    if (showSavedMessage) {
+        LaunchedEffect(showSavedMessage) {
+            viewModel.dismissSavedMessage()
+        }
     }
 }
 
@@ -233,5 +246,56 @@ private fun TravelPlanCard(
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun PremiumDialog(onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(
+                text = "Upgrade to Premium",
+                style = MaterialTheme.typography.titleLarge
+            )
+        },
+        text = {
+            Column {
+                Text("Get unlimited travel plans and more with Premium:")
+                Spacer(modifier = Modifier.height(8.dp))
+                BulletPoint("Unlimited travel plans")
+                BulletPoint("Custom budget levels")
+                BulletPoint("Enhanced AI suggestions")
+                BulletPoint("Offline access")
+            }
+        },
+        confirmButton = {
+            Button(
+                onClick = { /* TODO: Navigate to premium view */ }
+            ) {
+                Text("Upgrade Now")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Not Now")
+            }
+        }
+    )
+}
+
+@Composable
+private fun BulletPoint(text: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Default.CheckCircle,
+            contentDescription = null,
+            modifier = Modifier.size(16.dp),
+            tint = MaterialTheme.colorScheme.primary
+        )
+        Text(text)
     }
 }

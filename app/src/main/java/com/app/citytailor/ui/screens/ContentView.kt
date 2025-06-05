@@ -11,16 +11,27 @@ import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.app.citytailor.model.City
 import com.app.citytailor.ui.components.*
 import com.app.citytailor.viewmodel.MainViewModel
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import androidx.compose.runtime.LaunchedEffect
+import android.util.Log
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.LifecycleCoroutineScope
+import com.app.citytailor.user.UserManager
+import com.app.citytailor.data.store.TravelPlanStore
+import kotlinx.coroutines.launch
 
 @Composable
 fun ContentView(
-    viewModel: MainViewModel = viewModel()
+    viewModel: MainViewModel = viewModel(
+        factory = MainViewModel.factory(LocalContext.current.applicationContext as android.app.Application)
+    )
 ) {
     val selectedTab by viewModel.selectedTab.collectAsState()
     val searchText by viewModel.searchText.collectAsState()
@@ -81,22 +92,15 @@ fun ContentView(
     if (showDateSelectionView) {
         DateSelectionView(
             locationName = viewModel.selectedLocation.collectAsState().value,
-            onTravelPlanReceived = { travelPlan ->
-                viewModel.setTravelPlan(travelPlan)
-                viewModel.setSelectedDayNumber(1)
+            onTravelPlanReceived = { plan ->
+                viewModel.setTravelPlan(plan)
                 
-                // Update map for the first day
-                travelPlan?.let { plan ->
-                    plan.dailyPlans?.let { dailyPlans ->
-                        viewModel.updateMapForSelectedDay(dailyPlans, plan.location)
-                    }
+                plan.dailyPlans?.let { dailyPlans ->
+                    viewModel.updateMapForSelectedDay(dailyPlans, plan.location)
                 }
                 
-                // TODO: Save travel plan if user has remaining free plans
-                // TravelPlanStore.shared.canSaveTravelPlan(isPremium: false, context: context)
-                // TravelPlanStore.shared.saveTravelPlan(travelPlan, context: context)
-                // viewModel.setShowSaveFeedback(true)
-                
+                // Handle saving travel plan through ViewModel
+                viewModel.saveTravelPlan(plan)
                 viewModel.setShowDateSelectionView(false)
             },
             onDismiss = {
@@ -110,10 +114,16 @@ fun ContentView(
     }
     
     if (showSaveFeedback) {
-        LaunchedEffect(showSaveFeedback) {
-            // TODO: Show snackbar or alert dialog
-            viewModel.setShowSaveFeedback(false)
-        }
+        AlertDialog(
+            onDismissRequest = { viewModel.setShowSaveFeedback(false) },
+            title = { Text("Travel Plan Saved") },
+            text = { Text("Your travel plan has been successfully saved.") },
+            confirmButton = {
+                TextButton(onClick = { viewModel.setShowSaveFeedback(false) }) {
+                    Text("OK")
+                }
+            }
+        )
     }
     
     // Add TravelPlanView modal
@@ -228,15 +238,7 @@ fun MainMapScreen(
 
 @Composable
 fun PlansScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .navigationBarsPadding(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text("Plans View - Coming Soon")
-    }
+    PlansView()
 }
 
 @Composable
