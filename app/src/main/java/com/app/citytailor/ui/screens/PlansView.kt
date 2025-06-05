@@ -43,82 +43,6 @@ fun PlansView(
             .navigationBarsPadding()
             .padding(16.dp)
     ) {
-        // Show premium upgrade card if user is not premium and has no remaining free plans
-        if (!isPremium && remainingFreePlans == 0 && plans.isNotEmpty()) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 16.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                )
-            ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Icon(                            imageVector = Icons.Default.Star,
-                        contentDescription = null,
-                        modifier = Modifier.size(48.dp),
-                        tint = MaterialTheme.colorScheme.tertiary
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "Limit Reached",
-                        style = MaterialTheme.typography.titleLarge
-                    )
-                    Text(
-                        text = "You have reached the maximum of 3 travel plans for the free version. Upgrade to Premium for unlimited plans.",
-                        style = MaterialTheme.typography.bodyMedium,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(vertical = 8.dp)
-                    )
-                    Button(
-                        onClick = { viewModel.navigateToPremium() },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.tertiary
-                        )
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text("Upgrade to Premium")
-                    }
-                }
-            }
-        }
-        
-        // Show remaining free plans if user is not premium
-        else if (!isPremium && remainingFreePlans > 0) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 16.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant
-                )
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Remaining Free Plans: $remainingFreePlans",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                    TextButton(onClick = { viewModel.navigateToPremium() }) {
-                        Text("Upgrade to Premium")
-                    }
-                }
-            }
-        }
-
         // Travel Plans List
         LazyColumn(
             modifier = Modifier.weight(1f),
@@ -166,6 +90,83 @@ fun PlansView(
                 }
             }
         }
+
+        // Show premium upgrade card if user is not premium and has no remaining free plans
+        if (!isPremium && remainingFreePlans == 0 && plans.isNotEmpty()) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer
+                )
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Star,
+                        contentDescription = null,
+                        modifier = Modifier.size(48.dp),
+                        tint = MaterialTheme.colorScheme.tertiary
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Limit Reached",
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                    Text(
+                        text = "You have reached the maximum of 3 travel plans for the free version. Upgrade to Premium for unlimited plans.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                    Button(
+                        onClick = { viewModel.navigateToPremium() },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.tertiary
+                        )
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Star,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("Upgrade to Premium")
+                    }
+                }
+            }
+        }
+        
+        // Show remaining free plans if user is not premium
+        else if (!isPremium && remainingFreePlans > 0) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                )
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Remaining Free Plans: $remainingFreePlans",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    TextButton(onClick = { viewModel.navigateToPremium() }) {
+                        Text("Upgrade to Premium")
+                    }
+                }
+            }
+        }
     }
 
     if (showPremiumDialog) {
@@ -180,15 +181,15 @@ fun PlansView(
         }
     }
 
-    // TravelPlanView modal
+    // TravelPlanDetailView
     if (showTravelPlanView) {
         currentPlan?.let { plan ->
-            TravelPlanView(
+            TravelPlanDetailView(
                 travelPlan = plan,
                 selectedDayNumber = selectedDayNumber,
                 onDaySelected = { dayNumber -> viewModel.setSelectedDayNumber(dayNumber) },
                 onActivitySelected = { activity -> /* TODO: Implement activity selection */ },
-                onDismiss = { viewModel.setShowTravelPlanView(false) }
+                onNavigateBack = { viewModel.setShowTravelPlanView(false) }
             )
         }
     }
