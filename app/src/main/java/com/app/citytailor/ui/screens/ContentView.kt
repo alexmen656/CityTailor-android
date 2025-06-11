@@ -243,15 +243,7 @@ fun PlansScreen() {
 
 @Composable
 fun CommunityScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .navigationBarsPadding(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text("Community View - Coming Soon")
-    }
+    CommunityView()
 }
 
 @Composable
