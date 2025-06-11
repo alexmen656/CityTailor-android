@@ -114,11 +114,12 @@ class PostService private constructor() {
                 Base64.encodeToString(byteArray, Base64.DEFAULT)
             }
             
-            // Remove username from the request body
-            val createPostRequest = mapOf(
-                "location" to location,
-                "caption" to caption,
-                "images" to base64Images
+            // Create a proper data class request like iOS
+            val createPostRequest = CreatePostRequest(
+                location = location,
+                caption = caption,
+                images = base64Images,
+                timestamp = Date()
             )
             
             val json = gson.toJson(createPostRequest)
@@ -150,6 +151,14 @@ class PostService private constructor() {
         }
     }
 }
+
+// Data classes for API communication
+data class CreatePostRequest(
+    val location: String,
+    val caption: String,
+    val images: List<String>,
+    val timestamp: Date
+)
 
 // Extension function to make OkHttp calls suspendable
 private suspend fun Call.await(): Response {
