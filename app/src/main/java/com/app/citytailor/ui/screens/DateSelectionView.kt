@@ -34,6 +34,8 @@ import android.util.Log
 import com.app.citytailor.model.*
 import com.app.citytailor.network.TravelPlanService
 import com.app.citytailor.user.UserManager
+import com.app.citytailor.data.store.TravelPlanStore
+import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -57,11 +59,17 @@ fun DateSelectionView(
     var isSelectingStartDate by remember { mutableStateOf(true) }
     var generationProgress by remember { mutableFloatStateOf(0f) }
     var generationStatus by remember { mutableStateOf("Bereite Generierung vor...") }
+    var showLimitReachedDialog by remember { mutableStateOf(false) }
     
     val context = LocalContext.current
     val userManager = remember { UserManager.getInstance(context) }
+    val travelPlanStore = remember { TravelPlanStore.getInstance(context) }
     val isPremium = userManager.isPremium()
-    val remainingFreePlans = userManager.getRemainingFreePlans()
+    val remainingFreePlans by remember {
+        derivedStateOf {
+            runBlocking { travelPlanStore.getRemainingFreePlans() }
+        }
+    }
     val tripLengthInDays = ChronoUnit.DAYS.between(startDate, endDate).toInt() + 1
     
     // Helper function to update generation status with simulated delay
@@ -557,12 +565,12 @@ fun DateSelectionView(
                                 modifier = Modifier.padding(16.dp)
                             ) {
                                 val isPremium = userManager.isPremium()
-                                val remainingFreePlans = userManager.getRemainingFreePlans()
+                                val remainingFreePlans = runBlocking { travelPlanStore.getRemainingFreePlans() }
                                 
                                 ElevatedButton(
                                     onClick = {
                                         if (!isPremium && remainingFreePlans <= 0) {
-                                            // Show premium upgrade dialog
+                                            showLimitReachedDialog = true
                                         } else {
                                             isLoading = true
                                             // TODO: Start generation process
@@ -636,7 +644,7 @@ fun DateSelectionView(
                                 Column(
                                     modifier = Modifier.padding(16.dp)
                                 ) {
-                                    val remainingFreePlans = userManager.getRemainingFreePlans()
+                                    val remainingFreePlans = runBlocking { travelPlanStore.getRemainingFreePlans() }
                                     
                                     Row(
                                         verticalAlignment = Alignment.CenterVertically
@@ -695,6 +703,67 @@ fun DateSelectionView(
                 }
             }
         }
+    }
+    
+    // Limit Reached Dialog
+    if (showLimitReachedDialog) {
+        AlertDialog(
+            onDismissRequest = { showLimitReachedDialog = false },
+            title = {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Warning,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.size(24.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Limit erreicht",
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                }
+            },
+            text = {
+                Column {
+                    Text(
+                        text = "Sie haben das Maximum von 3 Reiseplänen für die kostenlose Version erreicht.",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Um einen neuen Plan zu erstellen, löschen Sie zunächst einen bestehenden Plan oder upgraden Sie auf Premium für unbegrenzte Pläne.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = { showLimitReachedDialog = false }
+                ) {
+                    Text("Verstanden")
+                }
+            },
+            dismissButton = {
+                FilledTonalButton(
+                    onClick = { 
+                        showLimitReachedDialog = false
+                        // TODO: Navigate to premium upgrade
+                    }
+                ) {
+                    Icon(
+                        Icons.Default.Star,
+                        contentDescription = null,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text("Premium")
+                }
+            }
+        )
     }
     
     // Date Picker Dialog

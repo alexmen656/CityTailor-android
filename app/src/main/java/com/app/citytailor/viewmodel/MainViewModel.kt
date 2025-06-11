@@ -193,9 +193,6 @@ class MainViewModel(
             val travelPlanStore = TravelPlanStore.getInstance(application)
             
             if (travelPlanStore.canSaveTravelPlan()) {
-                if (!userManager.isPremium()) {
-                    userManager.decrementRemainingFreePlans()
-                }
                 travelPlanStore.saveTravelPlan(plan)
                 setShowSaveFeedback(true)
             }

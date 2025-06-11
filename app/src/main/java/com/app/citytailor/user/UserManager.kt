@@ -35,33 +35,4 @@ class UserManager private constructor(context: Context) {
     fun setPremium(isPremium: Boolean) {
         sharedPreferences.edit().putBoolean("is_premium", isPremium).apply()
     }
-    
-    /**
-     * Gets the number of remaining free travel plans the user can generate.
-     * @return the number of remaining free plans
-     */
-    fun getRemainingFreePlans(): Int {
-        return sharedPreferences.getInt("remaining_free_plans", 3)
-    }
-    
-    /**
-     * Decrements the number of remaining free travel plans by 1.
-     * @return the updated number of remaining free plans
-     */
-    fun decrementRemainingFreePlans(): Int {
-        val currentPlans = getRemainingFreePlans()
-        if (currentPlans > 0) {
-            val newValue = currentPlans - 1
-            sharedPreferences.edit().putInt("remaining_free_plans", newValue).apply()
-            return newValue
-        }
-        return 0
-    }
-    
-    /**
-     * Resets the number of remaining free travel plans to the default value (3).
-     */
-    fun resetRemainingFreePlans() {
-        sharedPreferences.edit().putInt("remaining_free_plans", 3).apply()
-    }
 }
