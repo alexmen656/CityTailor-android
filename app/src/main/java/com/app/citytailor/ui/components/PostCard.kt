@@ -57,7 +57,7 @@ fun PostCard(
             ) {
                 // User avatar
                 Icon(
-                    imageVector = getUserAvatarIcon(post.userAvatar),
+                    imageVector = getUserAvatarIcon(post.userAvatar ?: "person.crop.circle.fill"),
                     contentDescription = "User Avatar",
                     modifier = Modifier
                         .size(40.dp)
@@ -203,7 +203,7 @@ fun PostCard(
     }
 }
 
-private fun getUserAvatarIcon(avatarName: String): ImageVector {
+private fun getUserAvatarIcon(avatarName: String?): ImageVector {
     return when (avatarName) {
         "person.crop.circle.fill" -> Icons.Default.AccountCircle
         else -> Icons.Default.Person

@@ -11,7 +11,7 @@ data class CommunityPost(
     val username: String,
     
     @SerializedName("userAvatar")
-    val userAvatar: String,
+    val userAvatar: String? = "person.crop.circle.fill", // Default avatar
     
     @SerializedName("location")
     val location: String,
@@ -40,5 +40,8 @@ data class LikeResponse(
     val success: Boolean,
     
     @SerializedName("likes")
-    val likes: Int
+    val likes: Int,
+    
+    @SerializedName("hasLiked")
+    val hasLiked: Boolean = false
 )

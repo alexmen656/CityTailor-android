@@ -2,6 +2,7 @@ package com.app.citytailor.viewmodel
 
 import android.app.Application
 import android.graphics.Bitmap
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -65,20 +66,25 @@ class CommunityViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             try {
                 val result = postService.likePost(postId)
+                Log.d("CommunityViewModel", "Like result: success=${result.success}, likes=${result.likes}, hasLiked=${result.hasLiked}")
                 if (result.success) {
-                    _posts.value = _posts.value.map { post ->
+                    val updatedPosts = _posts.value.map { post ->
                         if (post.id == postId) {
-                            post.copy(
-                                hasLiked = !post.hasLiked,
+                            val updatedPost = post.copy(
+                                hasLiked = result.hasLiked,
                                 likes = result.likes
                             )
+                            Log.d("CommunityViewModel", "Updated post: id=${updatedPost.id}, hasLiked=${updatedPost.hasLiked}, likes=${updatedPost.likes}")
+                            updatedPost
                         } else {
                             post
                         }
                     }
+                    _posts.value = updatedPosts
+                    Log.d("CommunityViewModel", "Posts state updated")
                 }
             } catch (e: Exception) {
-                // Handle error
+                Log.e("CommunityViewModel", "Error liking post", e)
             }
         }
     }

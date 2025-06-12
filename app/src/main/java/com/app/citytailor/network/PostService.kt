@@ -86,15 +86,17 @@ class PostService private constructor() {
             
             if (response.isSuccessful) {
                 Log.d("PostService", "Like post successful: $responseBody")
-                return@withContext gson.fromJson(responseBody, LikeResponse::class.java)
+                val likeResponse = gson.fromJson(responseBody, LikeResponse::class.java)
+                Log.d("PostService", "Parsed LikeResponse: success=${likeResponse.success}, likes=${likeResponse.likes}, hasLiked=${likeResponse.hasLiked}")
+                return@withContext likeResponse
             } else {
                 Log.e("PostService", "Failed to like post: ${response.code}")
                 Log.e("PostService", "Error response body: $responseBody")
-                return@withContext LikeResponse(success = false, likes = 0)
+                return@withContext LikeResponse(success = false, likes = 0, hasLiked = false)
             }
         } catch (e: Exception) {
             Log.e("PostService", "Error liking post", e)
-            return@withContext LikeResponse(success = false, likes = 0)
+            return@withContext LikeResponse(success = false, likes = 0, hasLiked = false)
         }
     }
     
